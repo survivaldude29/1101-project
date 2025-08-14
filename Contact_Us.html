@@ -3,6 +3,28 @@
         <title>Contact Us | Comp Sci Guys</title>
         <link rel="Shortcut_icon" href="Images/OIP.webp">
         <link rel="stylesheet" href="styles.css">
+        <script>
+            function validate()
+            {
+                // var or let
+                let userName = document.contactUs.uname.value;
+                let email= document.contactUs.email.value;
+                let phone = document.contactUs.phone.value;
+                let msg = document.contactUs.msg.value;
+
+                if(userName == "" || email == "" || phone == "" || msg == "")
+                    alert("Please fill in all the details.");
+                else if(phone.length != 10)
+                    alert("Phone should have 10 numbers.")
+                else if(msg.length < 5)
+                    alert("Please provide a longer message so we can help you better.")
+                else if (!email.includes("@") || (!email.includes(".")))  //(!email.includes("@gmail.com"))
+                    alert("Please use a gmail address.")
+                else
+                    alert("Form submitted successfully!")
+
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -17,19 +39,22 @@
     </header>
 
     <div class="content">
-        <form>
+        <form name="contactUs">
             <fieldset>
                 <label>Full Name</label>
-                <input type="text"/><br>
+                <input name="uname" type="text"/><br>
 
                 <label>Email</label>
-                <input type="email"/><br>
+                <input name="email" type="email"/><br>
 
                 <label>Phone</label>
-                <input type="tel"/><br>
+                <input name="phone" type="tel"/><br>
 
                 <label>Message</label>
-                <textarea rows="4"></textarea>
+                <textarea name="msg" rows="4"></textarea>
+
+                <label></label>
+                <input class="btn-submit" type="submit" value="Send!" onclick="validate();">
             </fieldset>
         </form>
 
